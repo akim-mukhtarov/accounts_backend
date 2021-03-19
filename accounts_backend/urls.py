@@ -24,4 +24,5 @@ urlpatterns = [
     path('getPresent/', views.getPresent.as_view()),
     path('getPresentsList/', views.getPresentsList.as_view()),
     path('getCategories/', views.getCategories),
+    path('getPresentsAll/', views.getPresentsAll)
 ]

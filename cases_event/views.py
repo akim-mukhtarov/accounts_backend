@@ -5,6 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import PresentSerializer
 from .models import *
+import json
 
 
 @require_http_methods(["GET"])
@@ -88,4 +89,21 @@ class getPresent(APIView):
         serializer = PresentSerializer(present)
 
         return Response(serializer.data)
+
+
+@require_http_methods(['GET'])
+def getPresentsAll(request):
+    # /getPresentsAll
+    # GET only
+    presents_all = PartisipantPresent.categories.presents_all
+    presents_all = json.dumps(
+        presents_all,
+        ensure_ascii=False
+        )
+    
+    return HttpResponse(
+        presents_all,
+        status=200,
+        content_type='application/json'
+        )
 
