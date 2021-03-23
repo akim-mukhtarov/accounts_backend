@@ -26,7 +26,7 @@ class Partisipant(models.Model):
 
 
     def is_exceeded(self):
-        if self.opened_today_count() >= 30:
+        if self.opened_today_count() >= 3:
             return True
         return False
     
