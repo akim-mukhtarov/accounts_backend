@@ -95,7 +95,7 @@ class getPresent(APIView):
 def getPresentsAll(request):
     # /getPresentsAll
     # GET only
-    presents_all = PartisipantPresent.categories.presents_all
+    presents_all = PartisipantPresent.categories.presents_variants
     presents_all = json.dumps(
         presents_all,
         ensure_ascii=False
