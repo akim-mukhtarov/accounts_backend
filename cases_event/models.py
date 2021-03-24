@@ -37,18 +37,21 @@ class Partisipant(models.Model):
     @property
     def pays_today_sum(self):
         return PartisipantPay.objects.filter(
-            date=datetime.date.today()
+            date=datetime.date.today(),
+            account=self.pk
             ).aggregate(sum=Sum('amount'))['sum'] or 0
             
     @property
     def opened_today_sum(self):
         return PartisipantPresent.objects.filter(
-            date=datetime.date.today()
+            date=datetime.date.today(),
+            owner=self.pk
             ).aggregate(sum=Sum('category'))['sum'] or 0
 
     def opened_today_count(self):
         return PartisipantPresent.objects.filter(
-            date=datetime.date.today()
+            date=datetime.date.today(),
+            owner=self.pk
             ).count()
 
 
